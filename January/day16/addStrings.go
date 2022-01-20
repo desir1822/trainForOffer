@@ -1,4 +1,4 @@
-package main
+package day16
 
 import (
 	"fmt"
@@ -23,12 +23,12 @@ import (
     num1 和num2 都只包含数字 0-9
 */
 func addStrings(num1 string, num2 string) string {
-	carry := 0//进位
+	carry := 0 //进位
 	ans := ""
-	for i, j := len(num1) - 1, len(num2) - 1; i >= 0 || j >= 0 || carry != 0; i, j = i - 1, j - 1 {
-		var x, y int   //x,y分别代表 本次计算相加的两部分
+	for i, j := len(num1)-1, len(num2)-1; i >= 0 || j >= 0 || carry != 0; i, j = i-1, j-1 {
+		var x, y int //x,y分别代表 本次计算相加的两部分
 		if i >= 0 {
-			 x = int(num1[i] - 48)
+			x = int(num1[i] - 48)
 			//通过debug  num1[i] type是byte,值是57  48是untyped constant值为48
 			//         conversion: num1[i]-48           得到的是byte类型，值为9
 			//                        byte-untyped constant-->byte
@@ -41,12 +41,12 @@ func addStrings(num1 string, num2 string) string {
 
 		}
 		result := x + y + carry
-		ans = strconv.Itoa(result%10) + ans//字符串拼接
+		ans = strconv.Itoa(result%10) + ans //字符串拼接
 		carry = result / 10
 	}
 	return ans
 }
-func main(){
-	s1:=addStrings("999","222")
+func main() {
+	s1 := addStrings("999", "222")
 	fmt.Println(s1)
 }

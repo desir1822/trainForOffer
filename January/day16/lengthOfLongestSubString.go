@@ -1,4 +1,4 @@
-package main
+package day16
 
 import "fmt"
 
@@ -24,7 +24,7 @@ set的value当作是证明存在的信号量，不存在为zero-value，存在�
 */
 func lengthOfLongestSubstring(s string) int {
 	// 哈希集合，记录每个字符是否出现过
-	m := map[byte]int{}//参考learingGoLan/goSpec/Properties of types and values/Reprenstability
+	m := map[byte]int{} //参考learingGoLan/goSpec/Properties of types and values/Reprenstability
 	//4lexcial element介绍rune字面量代表一个integer value，所以这两互换。stringLit没有介绍string可以代表interger value.所以不可互换。
 
 	n := len(s)
@@ -36,24 +36,23 @@ func lengthOfLongestSubstring(s string) int {
 			delete(m, s[i-1])
 		}
 		/*           rk+1<n防止 index out of range */
-		for rk + 1 < n && m[s[rk+1]] == 0 {//==0代表是int zero-value 没有进入过set
+		for rk+1 < n && m[s[rk+1]] == 0 { //==0代表是int zero-value 没有进入过set
 			// 不断地移动右指针
-			m[s[rk+1]]++   //每一个进入set的Byte对应的V==1 区别于zero-value就行
+			m[s[rk+1]]++ //每一个进入set的Byte对应的V==1 区别于zero-value就行
 			rk++
 		}
 		// 第 i 到 rk 个字符是一个极长的无重复字符子串
-		ans = max(ans, rk - i + 1)
+		ans = max(ans, rk-i+1)
 	}
 	return ans
 }
-
 func max(x, y int) int {
 	if x < y {
 		return y
 	}
 	return x
 }
-func main(){
+func main() {
 	fmt.Println(lengthOfLongestSubstring("abbcdabbb"))
 }
 
