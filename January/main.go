@@ -7,4 +7,6 @@ func main() {
 	s = append(s[:], 1)
 	fmt.Println(s)
 	fmt.Println(len(s))
+	t := []byte{}
+	fmt.Println(len(t))
 }
