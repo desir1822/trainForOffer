@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package day21
 
 func isValid(s string) bool {
 	n := len(s)
@@ -29,8 +27,4 @@ func isValid(s string) bool {
 		}
 	}
 	return len(stack) == 0
-}
-func main() {
-	fmt.Println(isValid(")((()))"))
-	fmt.Println(isValid("[]{}()"))
 }

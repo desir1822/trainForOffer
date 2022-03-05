@@ -10,7 +10,7 @@ var phoneMap1 map[rune]string = map[rune]string{
 	'8': "tuv",
 	'9': "wxyz",
 }
-var combinations []string
+var combinations1 []string
 
 func letterCombinations2(digits string) []string {
 	if len(digits) == 0 {
